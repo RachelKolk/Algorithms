@@ -6,15 +6,18 @@ def recipe_batches(recipe, ingredients):
   divisors = []
   for a in recipe:
     found = 0
-    for z in ingredients:
-      if a == z:
-        divisors.append((ingredients[z]//recipe[a]))
-        print(z,":", ingredients[z],"recipe needs",a,":", recipe[a])
-        print("Appending divisors")
-        print(divisors)
+    while found == 0:
+      for z in ingredients:
+        print("looping")
+        if a == z:
+          divisors.append((ingredients[z]//recipe[a]))
+          print(z,":", ingredients[z],"recipe needs",a,":", recipe[a])
+          print("Appending divisors")
+          print(divisors)
+          found = 1
+      if found == 0:
+        divisors.append(0)
         found = 1
-    if found == 0:
-      divisors.append(0)
   return min(divisors)
 
 if __name__ == '__main__':
