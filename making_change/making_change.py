@@ -3,10 +3,11 @@
 import sys
 
 #denomination list set up per read.me for correct change amounts
-denominations = [1, 5, 10, 25, 50]
+# denominations = [1, 5, 10, 25, 50]
 
 def making_change(amount, denominations):
   #base cases
+  print(amount)
   if amount == 0:
     return 0
   if amount < 0:
@@ -14,7 +15,9 @@ def making_change(amount, denominations):
   if len(denominations) == 0 and amount > 0: 
     return 0
   else:
-    return 
+    #recursive function call 
+    return making_change((amount-denominations[-1]), denominations) + making_change(amount, denominations[:1])
+    
 
 if __name__ == "__main__":
   # Test our your implementation from the command line
@@ -38,4 +41,7 @@ above.
 Oh and if we no longer have any change with which to give change with (if denominations list
 is empty) but the amount of money the patron gave us is larger than zero
 we will also have to return zero, because we don't have change to give them.
+Okay, now for the hard part, I think that in order to make the change we're going to have
+to recursively call the making_change function and at the same time use it to decrement
+the amount of change we still have in our available denominations.
 '''
